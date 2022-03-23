@@ -2,6 +2,7 @@ from sense_emu import SenseHat
 
 def display_readings(hat):
     
+    #data preparation needed
     hat.set_pixels([pixel for row in screen for pixel in row])
 
 hat = SenseHat()

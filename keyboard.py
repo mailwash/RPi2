@@ -14,11 +14,25 @@ class Klawiatura():
             if event.type == pygame.KEYDOWN:
                 print(pygame.key.name(event.key))
                 if event.key == pygame.K_q:
-                    print('q pressed - quiting app')
+                    print('q pressed')
                     return 'q'
                 if event.key == pygame.K_LEFT:
                     print('L arrow pressed ')
                     return 'LEFT'
+                if event.key == pygame.K_RIGHT:
+                    print('R arrow pressed')
+                    return 'RIGHT'
+                if event.key == pygame.K_UP:
+                    print('U arrow pressed')
+                    return 'UP'
+                if event.key == pygame.K_DOWN:
+                    print('D arrow pressed')
+                    return 'DOWN'
+    def KeyLatch(self):
+        key = self.sprawdzKlawisz()
+        if key == 'LEFT' or 'RIGHT' or 'UP' or 'DOWN' or 'q':
+            latched = key    
+        return latched
 # try:
 #     klaw = Klawiatura()
 #     LC = 0

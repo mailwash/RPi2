@@ -68,25 +68,32 @@ class silnik():
 print("Inicjacja silnika")        
 LewyPrzod = silnik(23,24,25,22,17,27)
 print("Inicjacja lamp")
-lamps = swiatla(26,19,13)
+lamps = swiatla(13,19,26)
 
 try:
     klaw = Klawiatura()
     kierunek = 'stop'
     while True:
-        klawisz = klaw.sprawdzKlawisz()
+        klawisz = klaw.KeyLatch()
         if klawisz == 'LEFT':
-            print('jedz do przodu')
+            lamps.NiebieskiOn()
+            LewyPrzod.Ruch(0.6,0.2,0)
+        elif klawisz == 'RIGHT':
+            lamps.ZielonyOn()
+            LewyPrzod.Ruch(0.6,-0.2,0)
+        elif klawisz == 'UP':
             lamps.CzerwonyOn()
-            LewyPrzod.Ruch(0.6,0,1)
-        if klawisz == 'q':
-            print('Zamknij apke')
-        else:
+            LewyPrzod.Ruch(0.6,0,0)
+        elif klawisz == 'DOWN':
+            lamps.OrangeBlink()
+            LewyPrzod.Ruch(-0.6,0,0)
+        elif klawisz == 'q':
             lamps.AllOff()
-            kierunek = 'stop'
+            LewyPrzod.stop()
         
     
-except KeyboardInterrupt:
+except:
+    del klaw
     LewyPrzod.stop()
     lamps.AllOff()
     IO.cleanup()

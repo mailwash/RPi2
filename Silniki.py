@@ -105,12 +105,12 @@ try:
     while True:
         lamps.CzerwonyOn()
         #LewyPrzod.doPrzodu(50,2)
-        LewyPrzod.Ruch(0.4,0,2)
+        LewyPrzod.Ruch(0.6,0.2,2)
         lamps.AllOff()
         LewyPrzod.stop(2)
         lamps.ZielonyOn()
         #LewyPrzod.doTylu(50,2)
-        LewyPrzod.Ruch(-0.4,0,2)
+        LewyPrzod.Ruch(-0.6,-0.2,2)
         lamps.AllOff()
         LewyPrzod.stop(2)
     

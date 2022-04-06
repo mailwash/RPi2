@@ -1,6 +1,8 @@
 import RPi.GPIO as IO
 from time import sleep
 from swiatla import swiatla
+from keyboard import Klawiatura
+import pygame
       
 
 class silnik():
@@ -69,17 +71,20 @@ print("Inicjacja lamp")
 lamps = swiatla(26,19,13)
 
 try:
+    klaw = Klawiatura()
+    kierunek = 'stop'
     while True:
-        lamps.CzerwonyOn()
-        #LewyPrzod.doPrzodu(50,2)
-        LewyPrzod.Ruch(0.6,0.2,2)
-        lamps.AllOff()
-        LewyPrzod.stop(2)
-        lamps.ZielonyOn()
-        #LewyPrzod.doTylu(50,2)
-        LewyPrzod.Ruch(-0.6,-0.2,2)
-        lamps.AllOff()
-        LewyPrzod.stop(2)
+        klawisz = klaw.sprawdzKlawisz()
+        if klawisz == 'LEFT':
+            print('jedz do przodu')
+            lamps.CzerwonyOn()
+            LewyPrzod.Ruch(0.6,0,1)
+        if klawisz == 'q':
+            print('Zamknij apke')
+        else:
+            lamps.AllOff()
+            kierunek = 'stop'
+        
     
 except KeyboardInterrupt:
     LewyPrzod.stop()

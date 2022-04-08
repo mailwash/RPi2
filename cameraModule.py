@@ -58,9 +58,14 @@ def main():
         success, img = cam.read()
         img = wykrywacz.znajdzDlon(img)
         listaWynikow = wykrywacz.ZnajdzPozycje(img)
+
+        # print(listaWynikow)
         if len(listaWynikow) != 0:
-            for i in range(len(listaWynikow)):
-                print(listaWynikow[i])
+            id1, x1, y1 = listaWynikow[5]
+            id2, x2, y2 = listaWynikow[17]
+            print("x1-x2: " + str(abs(x1-x2)) + " y1-y2: " + str(abs(y1-y2)))
+        #     for i in range(len(listaWynikow)):
+        #         print(listaWynikow[i])
         #cTime = time.time()
         #fps = 1/(cTime-pTime)
         #pTime = cTime

@@ -45,7 +45,7 @@ class WykrywanieReki():
         idp, kx, ky = punkt
         x = int(self.w/2)-kx
         cv2.putText(img,str(int(self.w/2)),(int(self.w/2),10),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,255),1)
-        cv2.putText(img,str(x),(10,150),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),1)
+        cv2.putText(img,str(x),(10,150),cv2.FONT_HERSHEY_SIMPLEX,1,(255,255,255),1)
 
         return img, x
 

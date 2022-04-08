@@ -34,24 +34,24 @@ try:
             cv2.putText(img, str(odleglosc), (10,150), cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,255),3)
             img, sterowanieX = wykrywacz.Koordynaty(img, listaWynikow[9])
             if sterowanieX > 120:
-                skret = 0.5
+                skret = 0.25
             elif sterowanieX > 50:
-                skret = 0.2
+                skret = 0.15
             elif sterowanieX < -50:
-                skret = -0.2
+                skret = -0.15
             elif sterowanieX < -120:
-                skret = -0.5
+                skret = -0.25
             else:
                 skret = 0
             cv2.putText(img, "skret" + str(skret), (10,250), cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,255),3)
             if odleglosc > 100:
                 lamps.CzerwonyOn()
-                motor.Ruch(0.7,skret,0.1)
-                motor.stop(0.3)
+                motor.Ruch(0.4,skret,0.1)
+                #motor.stop(0.01)
             elif odleglosc < 70:
                 lamps.ZielonyOn()
-                motor.Ruch(-0.7,skret,0.1)
-                motor.stop(0.3)
+                motor.Ruch(-0.4,skret,0.1)
+                #motor.stop(0.01)
             else:
                 lamps.NiebieskiOn()
                 motor.stop()
@@ -61,7 +61,7 @@ try:
 
         img = wykrywacz.RysujWskazniki(img)
         cv2.imshow("Zdjecie",img)
-        cv2.waitKey(1)
+        cv2.waitKey(2)
 
 
         #klawisz = klaw.KeyLatch()
